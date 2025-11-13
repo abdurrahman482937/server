@@ -280,12 +280,5 @@ app.get("/api/my/requests", async (req, res) => {
 
 app.all("*", (req, res) => res.status(404).json({ error: "Route not found" }));
 
-(async () => {
-    try {
-        await connectDb();
-        app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
-    } catch (err) {
-        console.error("Startup error:", err);
-        process.exit(1);
-    }
-})();
+await connectDb();
+export default app;
